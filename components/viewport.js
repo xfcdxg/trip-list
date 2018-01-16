@@ -1,0 +1,4 @@
+
+!function(e,i){
+  if (typeof window ==='undefined') { return }
+  var t=window,n=t.document,a=navigator.userAgent,o=a.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),r=a.match(/U3\/((\d+|\.){5,})/i),s=r&&parseInt(r[1].split(".").join(""),10)>=80,c=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),m=t.devicePixelRatio||1;window.location.href;c||o&&o[1]>534||s||(m=1);var p=1/m,d=n.querySelector('meta[name="viewport"]');d||((d=n.createElement("meta")).setAttribute("name","viewport"),n.head.appendChild(d)),d.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+p+",maximum-scale="+p+",minimum-scale="+p),n.documentElement.style.fontSize=50*m*1+"px",window.viewportScale=m}()

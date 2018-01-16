@@ -1,0 +1,44 @@
+{
+  "name": "trip-list-web",
+  "version": "1.0.0",
+  "description": "create list for trip",
+  "main": "index.js",
+  "scripts": {
+    "start": "next",
+    "analyze": "next analyze"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xfcdxg/trip-list-web.git"
+  },
+  "author": "zhou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xfcdxg/trip-list-web/issues"
+  },
+  "homepage": "https://github.com/xfcdxg/trip-list-web#readme",
+  "dependencies": {
+    "antd-mobile": "^2.0.0-beta.2",
+    "babel-plugin-import": "^1.6.3",
+    "express": "^4.16.2",
+    "isomorphic-unfetch": "^2.0.0",
+    "mulan-lib": "^1.0.26",
+    "next": "^4.2.2",
+    "next-redux-wrapper": "^1.3.5",
+    "path": "^0.12.7",
+    "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0",
+    "unsplash-js": "^4.8.0"
+  },
+  "devDependencies": {
+    "file-loader": "^1.1.6",
+    "style-loader": "^0.19.1",
+    "css-loader": "^0.28.8",
+    "svg-sprite-loader": "^3.6.2",
+    "url-loader": "^0.6.2"
+  }
+}
