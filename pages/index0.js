@@ -1,13 +1,15 @@
-import Unsplash from 'unsplash-js'
 import { Button } from 'antd-mobile'
-import { getStore } from 'mulan-lib'
-import Layout from '../components/layout'
 
-const App = () => {
-  const { image } = getStore('backgroundImage') || {}
-  
+import { bindActionCreators } from 'redux'
+import withRedux from 'next-redux-wrapper'
+import initStore from 'store'
+import { Component } from 'react'
+import Layout from 'components/layout'
+
+const App = ({ bgImage, isServer }) => {
+
   return (
-    <Layout background={{ image, color: '#000' }} >
+    <Layout background={{ bgImage }} isServer={ isServer } >
       <div className='deep-mask'></div>
       <div className='content'>
         <Button type='primary'>创建清单</Button>
@@ -38,4 +40,12 @@ const App = () => {
   )
 }
 
-export default App
+App.getInitialProps = ({ store, isServer }) => {
+  const { common } = store.getState()
+  return {
+    ...common,
+    isServer
+  }
+}
+
+export default withRedux(initStore)(App)

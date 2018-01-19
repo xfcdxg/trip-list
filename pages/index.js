@@ -1,59 +1,47 @@
-import Router from 'next/router'
-import { Icon } from 'antd-mobile'
-import { moment, getStore, setStore } from 'mulan-lib'
-import { randomPhoto } from '../lib/unsplash'
-import Layout from '../components/layout'
+import { Button } from 'antd-mobile'
 
-const fetchImg = async (now = moment('x')()) => {
-  let { image, ts = 0 } = getStore('backgroundImage') || {}
+import { bindActionCreators } from 'redux'
+import withRedux from 'next-redux-wrapper'
+import initStore from 'store'
+import { Component } from 'react'
+import Layout from 'components/layout'
 
-  if (typeof image === 'undefined' || now - ts > 0) {
-    const { regular } = await randomPhoto()
-    image = regular
-    ts = now
-    setStore('backgroundImage', { image, ts })
-  }
-  console.log(image)
-  return image
-}
+const App = ({ bgImage, isServer }) => {
 
-
-const App = () => (
-  <Layout background={{ color: '#000' }} >
-    <div className='content' ref={
-      async () => {
-        const img = new Image()
-
-        img.src = await fetchImg()
-        img.onload = () => {
-          // Router.push('/new')
+  return (
+    <Layout background={{ bgImage }} isServer={ isServer } >
+      <div className='deep-mask'></div>
+      <div className='content'>
+        <Button type='primary'>创建清单</Button>
+      </div>
+      <style jsx>
+      {`
+        .content {
+          padding: 0 2rem;
+          text-align: center;
+          width: 100%;
+          position: absolute;
+          bottom: 15%
         }
-      }
-    }>
-      <Icon type='loading' style={{ width: '40px', height: '40px' }} />
-    </div>
-    <style jsx>
-    {`
-      .content {
-        text-align: center;
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        margin-top: -20px;
-      }
-      .content img {
-        width: 100%;
-        vertical-align: top;
-      }
-    `}
-    </style>
-  </Layout>
-)
-
-
-App.getInitialProps = (props) => {
-  console.log(props)
-  return {}
+        .deep-mask {
+          background: linear-gradient(transparent 50%,#000);
+          // -webkit-gradient(linear, 50%, 100%, from(#fff), to(rgba(0, 0, 0, 0.3)));
+          opacity: .3;
+          width: 100%;
+          height: 100%;
+        }
+      `}
+      </style>
+    </Layout>
+  )
 }
 
-export default App
+App.getInitialProps = ({ store, isServer }) => {
+  const { common } = store.getState()
+  return {
+    ...common,
+    isServer
+  }
+}
+
+export default withRedux(initStore)(App)

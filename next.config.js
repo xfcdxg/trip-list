@@ -42,8 +42,6 @@ module.exports = {
       }
     )
 
-    // console.log(config, buildId, dev)
-
     return config
   }
 }

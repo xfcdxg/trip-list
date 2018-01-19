@@ -1,7 +1,8 @@
 {
   "plugins" : [
     [
-      "import", [
+      "import",
+      [
         { "libraryName": "antd-mobile" },
         { "libraryName": "mulan-lib", "libraryDirectory":"lib" },
         {
@@ -9,7 +10,18 @@
           "libraryDirectory": "src",
           "camel2DashComponentName": false
         },
-      ]
+      ],
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "components": "./components",
+          "lib": "./lib",
+          "store": "./store"
+        }
+      }
     ],
   ],
   "presets": ["next/babel"]

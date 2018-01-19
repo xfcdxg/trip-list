@@ -15,6 +15,25 @@ export default class extends Document {
             <NextScript />
           </footer>
         </body>
+        <style jsx global>
+          {`
+            body, html {
+              height: 100%;
+            }
+            body {
+              padding: 16px;
+              margin: 0;
+              padding: 0;
+              background-color: #000
+            }
+            body>div, #__next, #__next>div, #__next>div>div {
+              height: 100%;
+            }
+            * {
+              box-sizing: border-box;
+            }
+          `}
+        </style>
       </html>
     )
   }
